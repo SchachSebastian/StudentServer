@@ -1,0 +1,28 @@
+{
+  "schoolname": "HTL Kaindorf",
+  "classes": [
+    {
+      "class": "4BHIF",
+      "students": [
+        {
+          "student_id": 1,
+          "name": "Hans",
+          "birthday": "15.02.2005",
+          "mark": 2
+        },
+        {
+          "student_id": 2,
+          "name": "Herbert",
+          "birthday": "12.05.2005",
+          "mark": 1
+        },
+        {
+          "student_id": 3,
+          "name": "Franz",
+          "birthday": "23.12.2004",
+          "mark": 4
+        }
+      ]
+    }
+  ]
+}
