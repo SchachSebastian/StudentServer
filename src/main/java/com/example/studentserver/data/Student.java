@@ -14,11 +14,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 public class Student {
-	@JsonProperty("student_id")
+	@JsonProperty("student_id") // This is the name of the field in the JSON file
 	private int id;
 	private String name;
 	@JsonProperty("birthday")
-	@JsonDeserialize(using = BirthDateDeserializer.class)
+	@JsonDeserialize(using = BirthDateDeserializer.class) // extra deserializer for birthday, to
+	// convert format dd.MM.yyyy to LocalDateTime
 	private LocalDateTime birthDate;
 	private int mark;
 }

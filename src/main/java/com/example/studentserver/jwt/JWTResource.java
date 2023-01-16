@@ -10,6 +10,7 @@ public class JWTResource {
 	@POST
 	@Consumes("application/json")
 	public Response getJWT(String username) {
+		// return token if username is correct (Schachner)
 		if (username.equals("Schachner")) {
 			Token token = JWTManager.createJWT();
 			return Response.ok().entity(token).build();

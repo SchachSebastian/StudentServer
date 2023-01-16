@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/school")
 public class SchoolResource {
+	// get school method, which returns the school if token valid
 	@GET
 	@Produces("application/json")
 	public Response getSchool(@HeaderParam("Authorization") String token) {
