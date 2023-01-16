@@ -12,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SchoolTest {
 	private static ObjectMapper objectMapper;
-	@BeforeAll
+	// @BeforeEach - execute before each test
+	@BeforeAll // execute before all tests
 	static void setUp() {
 		objectMapper = new ObjectMapper();
 	}
