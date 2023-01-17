@@ -72,6 +72,37 @@ class LocalDateDeserializer extends StdDeserializer<Date> {
 }
 ```
 
+#### ObjectMapper
+
+object used to convert objects to JSON and vice versa
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+class Jackson {
+	// from json to object
+	void deserialize() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		School school = objectMapper
+				.readValue(getClass().getClassLoader()
+				                     .getResource("school.json"),
+				           School.class);
+//	getClass().getClassLoader().getResource("school.json")
+//      specifies the path to the file in resources directory
+	}
+	// with string
+	void deserializeWithString(String json) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		School school = objectMapper.readerFor(School.class).readValue(json);
+	}
+	// serialize object to json
+	void serialize() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(school);
+	}
+}
+```
+
 ## JakartaEE
 
 Resource and Application class required, probably predefined in the revision project
@@ -189,7 +220,7 @@ required classes
 ```java
 public class JWTManager {
 	private static final Algorithm algorithm = Algorithm.HMAC256(
-			"student-server is a nice " + "example"); // alogrithm
+			"student-server is a nice " + "example"); // algoritm
 	// to sign the token, secret can be any string, but preferably a long one
 	public static Token createJWT() {
 		return new Token(JWT.create().withIssuedAt(new Date()).withIssuer("Student-Server")
