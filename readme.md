@@ -24,8 +24,11 @@ used to define a map of properties that are not defined in the class
 
 ```java
 class Person {
-	@JsonAnySetter
 	private Map<String, Object> properties = new HashMap<>();
+	@JsonAnySetter
+	public void set(String name, Object value) {
+		properties.put(name, value);
+	}
 	@JsonAnyGetter
 	public Map<String, Object> getProperties() {
 		return properties;
@@ -39,6 +42,7 @@ used to define a custom serializer/deserializer for a class, especially useful f
 
 ```java
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 class Person {
 	@JsonSerialize(using = LocalDateSerializer.class)
@@ -47,7 +51,7 @@ class Person {
 }
 
 // with format dd.MM.yyyy
-class LocalDateSerializer extends JsonSerializer<Date> {
+class LocalDateSerializer extends StdSerializer<Date> {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 	@Override
 	public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
